@@ -1,0 +1,12 @@
+wheel:
+    diameter: 0.0762
+    separation:
+        vertical: 0.194  # vertical mean forward direction
+        horizontal: 0.18
+motor:
+    gains:
+        p: 15.0
+        i: 5.0
+        d: 0.0
+encoder:
+    ticks_per_rev: 3200

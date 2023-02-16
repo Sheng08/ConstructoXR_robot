@@ -1,0 +1,1 @@
+main.launch: make every thing start by one launch file.

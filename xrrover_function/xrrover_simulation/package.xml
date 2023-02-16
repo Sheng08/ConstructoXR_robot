@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>xrrover_simulation</name>
+  <version>0.0.0</version>
+  <description>
+    The xrlab rover bringup package, 
+    roslaunch scripts for starting the Xrlab_rover.
+  </description>
+
+  <license>Apache 2.0</license>
+  <author email="jerryhuang19628@gmail.com">JerryHuang</author>
+  <maintainer email="jerryhuang19628@gmail.com">JerryHuang</maintainer>
+  <url type="repository"></url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>sensor_msgs</depend>
+
+  <exec_depend>xrlav_rover_description</exec_depend>
+  <exec_depend>xrlav_rover_teleop</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rosserial_python</exec_depend>
+</package>

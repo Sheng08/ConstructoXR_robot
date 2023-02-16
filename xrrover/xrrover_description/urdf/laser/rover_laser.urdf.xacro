@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot name="laser" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="cylinder_inertia_laser" params="mass r l">
+        <inertia    ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0"
+                    iyy="${mass*(3*r*r+l*l)/12}" iyz = "0"
+                    izz="${mass*(r*r)/2}" />
+    </xacro:macro>
+
+    <xacro:macro name="rover_laser">
+        <joint name="joint_sensor_laser" type="fixed">
+            <origin xyz="0.05 0 0.0691" rpy="0 0 0"/> <!-- 0.0691 = 0.0381 + 0.05/2 + 0.006 --> <!-- 0.0691 = 0.0381 + cylinder_length/2 + base_link_to_footprint's_0.006 -->
+            <parent link="base_link"/>
+            <child link="base_scan"/>
+        </joint>
+        
+        <link name="base_scan">
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <mass value="1" />
+                <xacro:cylinder_inertia_laser mass="1" r="0.05" l="0.1" />
+            </inertial>
+
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+                </geometry>
+                <material name="white">
+                    <color rgba="${255/255} ${255/255} ${255/255} 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+</robot>

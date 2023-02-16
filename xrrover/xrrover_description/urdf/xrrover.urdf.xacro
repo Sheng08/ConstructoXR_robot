@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<robot name="rover" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- Import rover wheels -->
+	<xacro:include filename="$(find xrrover_description)/urdf/wheels/rover_wheel.urdf.xacro" />
+	<xacro:include filename="$(find xrrover_description)/urdf/base/rover_base.urdf.xacro" />
+	<xacro:include filename="$(find xrrover_description)/urdf/laser/rover_laser.urdf.xacro" />
+	<xacro:include filename="$(find xrrover_description)/urdf/gazebo/rover_gazebo.xacro" />
+
+	<!-- Wheel parameters --> <!-- x,y,z in translation from base_link to the center of the wheel -->
+	<xacro:property name="wheel_offset_x" value="0.1069" /> <!-- 0.1069 = (0.29-0.0762)/2 = (x-diameter)/2-->
+	<xacro:property name="wheel_offset_y" value="0.09" /> <!-- 0.09 = (0.22-2*0.02)/2 = (y-2*wheel_width_center)/2-->
+	<xacro:property name="wheel_offset_z" value="-0.0061" />
+
+
+	<xacro:macro name="robot">
+		<xacro:rover_base/>
+
+		<xacro:rover_wheel prefix="rover_front_right" parent="base_link" reflect="false">
+			<origin xyz="${wheel_offset_x} -${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
+		</xacro:rover_wheel>
+
+		<xacro:rover_wheel prefix="rover_front_left" parent="base_link" reflect="true">
+			<origin xyz="${wheel_offset_x} ${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
+		</xacro:rover_wheel>
+
+		<xacro:rover_wheel prefix="rover_rear_left" parent="base_link" reflect="true">
+			<origin xyz="-${wheel_offset_x} ${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
+		</xacro:rover_wheel>
+
+		<xacro:rover_wheel prefix="rover_rear_right" parent="base_link" reflect="false">
+			<origin xyz="-${wheel_offset_x} -${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
+		</xacro:rover_wheel>
+
+		<xacro:rover_laser/>
+		
+		<xacro:rover_controller/>
+		
+
+	</xacro:macro>
+	<xacro:robot/>
+
+</robot>
+

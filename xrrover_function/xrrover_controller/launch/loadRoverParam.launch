@@ -1,0 +1,3 @@
+<launch>
+    <rosparam command="load" file="$(find xrrover_controller)/param/rover.yaml" /> 
+</launch>

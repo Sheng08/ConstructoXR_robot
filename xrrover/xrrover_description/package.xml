@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>xrrover_description</name>
+  <version>0.0.0</version>
+  <description>
+    The xrlab_rover_description package
+  </description>
+
+  <license>Apache 2.0</license>
+  <author email="jerryhuang19628@gmail.com">JerryHuang</author>
+  <maintainer email="jerryhuang19628@gmail.com">JerryHuang</maintainer>
+  <url type="repository"></url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>urdf</depend>
+  <depend>xacro</depend>
+</package>

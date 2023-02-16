@@ -1,0 +1,3 @@
+<launch>
+    <rosparam command="load" file="$(find xrrover_motor)/param/rover.yaml" /> 
+</launch>

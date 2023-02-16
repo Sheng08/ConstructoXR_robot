@@ -1,3 +1,5 @@
 <launch>
-    <node name="mecanum_core" pkg="xrrover_controller" type="mecanum_core.py"/>
+    <node pkg="xrrover_motor" type="mecanum_core.py" name="mecanum_core" output="screen">
+        <rosparam command="load" file="$(find xrrover_motor)/param/mecanum_core.yaml" /> 
+    </node>
 </launch>

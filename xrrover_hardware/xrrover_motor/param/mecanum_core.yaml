@@ -1,0 +1,3 @@
+pub_odom: True
+pub_tf: False
+odom_name: "encoder/odom"

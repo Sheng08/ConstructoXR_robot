@@ -33,9 +33,14 @@ class RosController:
         # endregion
 
         # region: get parameters about the geometry of the wheels
-        self.WHEEL_SEPARATION_WIDTH = rospy.get_param("/wheel/separation/horizontal")
-        self.WHEEL_SEPARATION_LENGTH = rospy.get_param("/wheel/separation/vertical")
-        self.WHEEL_RADIUS = rospy.get_param("/wheel/diameter") / 2
+        self.pub_odom = rospy.get_param("~pub_odom", True)
+        self.pub_tf = rospy.get_param("~pub_tf", False)
+        self.odom_name = rospy.get_param("~odom_name", "odom")
+        print(self.odom_name)
+
+        self.WHEEL_SEPARATION_WIDTH = rospy.get_param("wheel/separation/horizontal")
+        self.WHEEL_SEPARATION_LENGTH = rospy.get_param("wheel/separation/vertical")
+        self.WHEEL_RADIUS = rospy.get_param("wheel/diameter") / 2
         self.WHEEL_GEOMETRY = (self.WHEEL_SEPARATION_WIDTH + self.WHEEL_SEPARATION_LENGTH) / 2
         # endregion
 
@@ -52,8 +57,10 @@ class RosController:
         self.sub_wheel_fr = rospy.Subscriber('return/front/right', Float32, self.TriggerForUpdateFRVelocity)
         self.sub_wheel_rl = rospy.Subscriber('return/rear/left', Float32, self.TriggerForUpdateRLVelocity)
         self.sub_wheel_rr = rospy.Subscriber('return/rear/right', Float32, self.TriggerForUpdateRRVelocityThanPublishOdomAndTf)
-        self.pub = rospy.Publisher('odom', Odometry, queue_size=1)
-        self.odom_tf_broadcaster = tf.TransformBroadcaster()
+        if self.pub_odom:
+            self.pub = rospy.Publisher(self.odom_name, Odometry, queue_size=1)
+        if self.pub_tf:
+            self.odom_tf_broadcaster = tf.TransformBroadcaster()
         # endregion
 
     # region: implement cmd_vel -> four wheel aim speed
@@ -124,23 +131,25 @@ class RosController:
         self.__UpdateOdomTwist()
 
         # region: pub tf
-        self.odom_tf_broadcaster.sendTransform(
-            (self.odom_x, self.odom_y, 0.),
-            self.odom_quaternion,
-            self.current_time,
-            "base_footprint",
-            "odom"
-        )
+        if self.pub_tf:
+            self.odom_tf_broadcaster.sendTransform(
+                (self.odom_x, self.odom_y, 0.),
+                self.odom_quaternion,
+                self.current_time,
+                "base_footprint",
+                self.odom_name
+            )
         # endregion
 
         # region: pub odom
-        odom = Odometry()
-        odom.header.stamp = self.current_time
-        odom.header.frame_id = "odom"
-        odom.child_frame_id = "base_footprint"
-        odom.twist.twist = Twist(Vector3(self.odom_vx, self.odom_vy, 0), Vector3(0, 0, self.odom_wz))
-        odom.pose.pose = Pose(Point(self.odom_x, self.odom_y, 0.), Quaternion(*self.odom_quaternion))
-        self.pub.publish(odom)
+        if self.pub_odom:
+            odom = Odometry()
+            odom.header.stamp = self.current_time
+            odom.header.frame_id = self.odom_name
+            odom.child_frame_id = "base_footprint"
+            odom.twist.twist = Twist(Vector3(self.odom_vx, self.odom_vy, 0), Vector3(0, 0, self.odom_wz))
+            odom.pose.pose = Pose(Point(self.odom_x, self.odom_y, 0.), Quaternion(*self.odom_quaternion))
+            self.pub.publish(odom)
         # endregion
         pass
     #endregion

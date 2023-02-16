@@ -1,4 +1,4 @@
 <launch>
-    <include file="$(find xrrover_controller)/launch/loadRoverParam.launch"/>
+    <include file="$(find xrrover_controller)/launch/rover_param.launch"/>
     <include file="$(find xrrover_controller)/launch/mecanum_core.launch"/>
 </launch>

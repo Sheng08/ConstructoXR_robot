@@ -1,15 +1,19 @@
-<!--imu ros 驅動-->
+<!--imu 和 3D 模型同时打開-->
+
 <launch>
+
     <!-- imu型號，默認 a9 -->
     <arg name="imu_type" default="a9" doc="imu_type [a9, b9, b6]"/>
-    <arg name="port_name" default="/dev/ttyUSB1" doc="port_name [/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2]" />
-
 
     <!-- imu 對應 python 文件 -->
     <node pkg="xrrover_imu" type="hfi_$(arg imu_type)_ros.py" name="xrrover_imu" output="screen">
-        <param name="port"               type = "str"    value="$(arg port_name)"/>
+        <param name="port"               type = "str"    value="/dev/ttyUSB0"/>
         <!-- a9 重力加速度歸一化處理，True 使用歸一化處理， False 不適用歸一化處理 -->
         <param name="gra_normalization"  type = "bool"   value="True" if="$(eval imu_type == 'a9')"/>
     </node>
-</launch>
 
+    <!-- 打開 3d 模型 -->
+    <node pkg="xrrover_imu" type="display_3D_visualization.py" name="display_3D_visualization_node" output="screen">
+    </node>
+
+</launch>   

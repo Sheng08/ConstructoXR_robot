@@ -1,0 +1,20 @@
+<!--imu 和 rviz 同时打開-->
+
+<launch>
+
+    <!-- imu 型號，xrrover use a9 type -->
+    <arg name="imu_type" default="a9" doc="imu_type [a9, b9, b6]"/>
+    <arg name="port_name" default="/dev/ttyUSB1" doc="port_name [/dev/ttyUSB0 /dev/ttyUSB1 /dev/ttyUSB2]" />
+
+    <!-- imu 對應 python 文件 -->
+    <node pkg="xrrover_imu" type="hfi_$(arg imu_type)_ros.py" name="imu" output="screen">
+        <param name="port"               type = "str"    value="/dev/ttyUSB0"/>
+        <!-- a9 重力加速度歸一化處理，True 使用歸一化處理， False 不適用歸一化處理 -->
+        <param name="gra_normalization"  type = "bool"   value="True" if="$(eval imu_type == 'a9')"/>
+    </node>
+
+    <!-- 加载 rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xrrover_imu)/rviz/handsfree_ros_imu.rviz">
+    </node>
+
+</launch>   

@@ -1,0 +1,6 @@
+<!-- 單獨打開 rviz -->
+
+<launch>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xrrover_imu)/rviz/handsfree_ros_imu.rviz">
+    </node>
+</launch>

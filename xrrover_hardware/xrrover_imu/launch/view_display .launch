@@ -1,0 +1,7 @@
+<!--單獨打開 3d 模型-->
+
+<launch>
+    <!-- 打開 3d 模型 -->
+    <node pkg="xrrover_imu" type="display_3D_visualization.pyc" name="display_3D_visualization_node" output="screen">
+    </node>
+</launch>  

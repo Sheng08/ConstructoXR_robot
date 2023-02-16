@@ -36,7 +36,6 @@ class RosController:
         self.pub_odom = rospy.get_param("~pub_odom", True)
         self.pub_tf = rospy.get_param("~pub_tf", False)
         self.odom_name = rospy.get_param("~odom_name", "odom")
-        print(self.odom_name)
 
         self.WHEEL_SEPARATION_WIDTH = rospy.get_param("wheel/separation/horizontal")
         self.WHEEL_SEPARATION_LENGTH = rospy.get_param("wheel/separation/vertical")

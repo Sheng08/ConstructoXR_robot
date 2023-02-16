@@ -1,8 +1,6 @@
 <launch>
-  <arg name="model" default="xrrover" doc="model type [xrrover]"/>
   
   <include file="$(find xrrover_bringup)/launch/includes/description.launch.xml">
-    <arg name="model" value="$(arg model)" />
   </include>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">

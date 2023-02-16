@@ -2,4 +2,6 @@
   <node name="rplidarNode" pkg="rplidar_ros"  type="rplidarNode" output="screen">
     <rosparam command="load" file="$(find rplidar_ros)/param/rplidarA2.yaml" />
   </node>
+  
+  <node name="rplidarNodeClient" pkg="rplidar_ros"  type="rplidarNodeClient" output="screen" />
 </launch>

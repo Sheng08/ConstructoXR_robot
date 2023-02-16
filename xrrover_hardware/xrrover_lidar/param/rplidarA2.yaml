@@ -1,0 +1,5 @@
+serial_port         : '/dev/ttyUSB0'
+serial_baudrate     : 115200
+frame_id            : 'base_scan'
+inverted            : false
+angle_compensate    : true

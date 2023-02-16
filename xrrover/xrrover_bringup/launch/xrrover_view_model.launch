@@ -9,4 +9,6 @@
     <param name="use_gui" value="true"/>
     <param name="rate" value="50"/>
   </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xrrover_description)/rviz/$(arg model).rviz"/>
 </launch>

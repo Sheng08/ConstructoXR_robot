@@ -1,19 +1,20 @@
-<!--imu 和 3D 模型同时打開-->
+<!--imu 和 rviz 同时打開-->
 
 <launch>
 
-    <!-- imu型號，默認 a9 -->
+    <!-- imu 型號，xrrover use a9 type -->
     <arg name="imu_type" default="a9" doc="imu_type [a9, b9, b6]"/>
+    <arg name="port_name" default="/dev/ttyUSB1" doc="port_name [/dev/ttyUSB0 /dev/ttyUSB1 /dev/ttyUSB2]" />
 
     <!-- imu 對應 python 文件 -->
-    <node pkg="xrrover_imu" type="hfi_$(arg imu_type)_ros.py" name="xrrover_imu" output="screen">
+    <node pkg="xrrover_imu" type="hfi_$(arg imu_type)_ros.py" name="imu" output="screen">
         <param name="port"               type = "str"    value="/dev/ttyUSB0"/>
         <!-- a9 重力加速度歸一化處理，True 使用歸一化處理， False 不適用歸一化處理 -->
         <param name="gra_normalization"  type = "bool"   value="True" if="$(eval imu_type == 'a9')"/>
     </node>
 
-    <!-- 打開 3d 模型 -->
-    <node pkg="xrrover_imu" type="display_3D_visualization.py" name="display_3D_visualization_node" output="screen">
+    <!-- 加载 Subscriber node -->
+    <node pkg="xrrover_imu" type="get_imu_rpy.py" name="get_imu_rpy" output="screen">
     </node>
 
 </launch>   

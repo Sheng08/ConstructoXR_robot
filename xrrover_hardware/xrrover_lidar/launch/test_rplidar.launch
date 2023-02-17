@@ -1,7 +1,7 @@
 <launch>
-  <node name="rplidarNode" pkg="rplidar_ros"  type="rplidarNode" output="screen">
-    <rosparam command="load" file="$(find rplidar_ros)/param/rplidarA2.yaml" />
+  <node name="rplidarNode" pkg="xrrover_lidar"  type="rplidarNode" output="screen">
+    <rosparam command="load" file="$(find xrrover_lidar)/param/rplidarA2.yaml" />
   </node>
   
-  <node name="rplidarNodeClient" pkg="rplidar_ros"  type="rplidarNodeClient" output="screen" />
+  <node name="rplidarNodeClient" pkg="xrrover_lidar"  type="rplidarNodeClient" output="screen" />
 </launch>

@@ -12,8 +12,8 @@ from tf.transformations import quaternion_from_euler
 
 
 # 查找 ttyUSB* 设备
-def find_ttyUSB():
-    print('imu 默認串口為 /dev/ttyUSB0, 若識別多個串口設備, 請在 launch 文件中修改 imu 對應的串口')
+def find_ttyUSB(port):
+    print(f'imu 默認串口為 {port},\n若識別多個串口設備, 請在 launch 文件中修改 imu 對應的串口')
     posts = [port.device for port in serial.tools.list_ports.comports() if 'USB' in port.device]
     print('當前電腦所連接的 {} 串口設備共 {} 個: {}'.format('USB', len(posts), posts))
 
@@ -160,9 +160,9 @@ data_right_count = 0
 if __name__ == "__main__":
     python_version = platform.python_version()[0]
 
-    find_ttyUSB()
     rospy.init_node("imu")
-    port = rospy.get_param("~port", "/dev/ttyUSB0")
+    port = rospy.get_param("~port")
+    find_ttyUSB(port)
     baudrate = rospy.get_param("~baudrate", 921600)
     gra_normalization = rospy.get_param("~gra_normalization", True)
     imu_msg = Imu()

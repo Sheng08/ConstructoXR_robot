@@ -1,0 +1,11 @@
+Active,Name,Task Nesting,Actual Dates Enabled,Actual Start,Actual End,Planned Dates Enabled,Planned Start,Planned End,Task Type,Attached,Script,Data Source,Synchronization ID,Display ID,Animation,Animation Behavior,Provided Progress %,Comments,Material Cost,Labor Cost,Equipment Cost,Subcontractor Cost,User 1,User 2,User 3,User 4,User 5,User 6,User 7,User 8,User 9,User 10
+1,XR lab,0,1,6/9/2023 9:00:00 AM,,1,6/12/2023 9:00:00 AM,6/18/2023 5:00:00 PM,,,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Drywall Installation,1,1,6/9/2023 9:00:00 AM,,1,6/12/2023 9:00:00 AM,6/13/2023 5:00:00 PM,,Sets->XR lab->Drywall Installation,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Painting,1,1,,,1,6/14/2023 9:00:00 AM,6/15/2023 5:00:00 PM,,Sets->XR lab->Painting,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Others,1,1,,,1,6/16/2023 9:00:00 AM,6/18/2023 5:00:00 PM,,Sets->XR lab->Others,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Kitchen Area,0,1,,,1,6/16/2023 9:00:00 AM,6/20/2023 5:00:00 PM,,,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Painting,1,1,,,1,6/16/2023 9:00:00 AM,6/17/2023 5:00:00 PM,,Sets->Kitchen Area->Painting,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Others,1,1,,,1,6/18/2023 9:00:00 AM,6/20/2023 5:00:00 PM,,Sets->Kitchen Area->Others,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Computer area,0,1,,,1,6/12/2023 9:00:00 AM,6/16/2023 5:00:00 PM,,,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Others,1,1,,,1,6/15/2023 9:00:00 AM,6/16/2023 5:00:00 PM,,Sets->Computer area->Others,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,
+1,Painting,1,1,,,1,6/12/2023 9:00:00 AM,6/13/2023 5:00:00 PM,,Sets->Computer area->Painting,,,,,,Scale,0.0%,0,0.000000,0.000000,0.000000,0.000000,,,,,,,,,,

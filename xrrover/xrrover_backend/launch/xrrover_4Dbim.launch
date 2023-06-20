@@ -1,0 +1,3 @@
+<launch>
+  <node name="bimschedules" pkg="xrrover_backend" type="bimtoros.py" output="screen" />
+</launch>

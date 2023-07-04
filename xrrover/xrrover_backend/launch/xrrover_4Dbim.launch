@@ -1,3 +1,4 @@
 <launch>
-  <node name="bimschedules" pkg="xrrover_backend" type="bimtoros.py" output="screen" />
+  <node name="bim_to_ros" pkg="xrrover_backend" type="bimtoros.py" output="screen" />
+  <node name="bim_schedule_check" pkg="xrrover_backend" type="spacecheck.py" output="screen" />
 </launch>

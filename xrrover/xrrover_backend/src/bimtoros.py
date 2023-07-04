@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import csv, time
-from datetime import datetime
 import rospkg, rospy
 from xrrover_backend.msg import Schedule, Schedules
 
@@ -16,9 +15,9 @@ class BimSchedule:
     self.end = None
     self.name = None
     self.parent = None
-    self.ok = self.is_schedule_exit()
+    self.ok = self.is_schedule_exist()
 
-  def is_schedule_exit(self):
+  def is_schedule_exist(self):
     has_data = self.start and self.end and self.name
     return False if has_data == None else True
   
@@ -31,7 +30,7 @@ class BimSchedule:
     self.end = self.create_worktime(end_str)
     self.name = data['Name']
     self.parent = self.get_parent_of_work(relation_string)
-    self.ok = self.is_schedule_exit()
+    self.ok = self.is_schedule_exist()
 
   def create_worktime(self, time_str):
     if time_str:
@@ -43,10 +42,11 @@ class BimSchedule:
   def convert_to_secs_nsecs(self, date_string):
     if date_string == '':
       return None, None
-    dt = datetime.strptime(date_string, "%m/%d/%Y %I:%M:%S %p")
-    timestamp = int(time.mktime(dt.timetuple()))
-    nanoseconds = dt.microsecond * 1000
-    return timestamp, nanoseconds
+    struct_time = time.strptime(date_string, "%m/%d/%Y %I:%M:%S %p")
+    timestamp = int(time.mktime(struct_time))
+    secs = int(timestamp)
+    nsecs = int((timestamp - secs) * 1e9)
+    return secs, nsecs
   
   def get_parent_of_work(self, data_string):
     if data_string:

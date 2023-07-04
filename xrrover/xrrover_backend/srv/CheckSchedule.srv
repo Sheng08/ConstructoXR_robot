@@ -1,0 +1,4 @@
+string zone
+---
+bool occupy
+string message

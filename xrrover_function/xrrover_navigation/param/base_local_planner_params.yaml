@@ -25,5 +25,5 @@ TrajectoryPlannerROS:
   sim_time: 0.8
   vx_samples: 18
   vy_samples: 18
-  vtheta_samples: 20
+  vtheta_samples: 40
   sim_granularity: 0.05

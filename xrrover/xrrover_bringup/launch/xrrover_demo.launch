@@ -1,0 +1,10 @@
+<launch>
+  <include file="$(find xrrover_bringup)/launch/xrrover_remote.launch"></include>
+  <include file="$(find xrrover_fusing)/launch/ekf_localization.launch"></include>
+  <include file="$(find xrrover_navigation)/launch/xrrover_navigation.launch"></include>
+  <include file="$(find xrrover_backend)/launch/xrrover_4Dbim.launch"></include>
+
+  <include file="$(find ros_tcp_endpoint)/launch/endpoint.launch">
+  	<arg name="tcp_ip" value="192.168.50.222" />
+  </include>
+</launch>

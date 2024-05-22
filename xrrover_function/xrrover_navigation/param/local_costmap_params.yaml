@@ -2,11 +2,11 @@ local_costmap:
   global_frame: odom
   robot_base_frame: base_footprint
 
-  update_frequency: 1.0
-  publish_frequency: 1.0
-  transform_tolerance: 0.5  
+  update_frequency: 1.0             # fix
+  publish_frequency: 1.0            # fix
+  transform_tolerance: 0.5
 
-  static_map: false  
+  static_map: false
   rolling_window: true
   width: 4
   height: 4
@@ -14,3 +14,9 @@ local_costmap:
   # plugins:
   #  - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}
   #  - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
+
+
+## Some ref
+# * https://github.com/ros-planning/navigation/issues/468#issuecomment-222065390
+# * https://answers.ros.org/question/106261/extrapolation-error-and-amcl/
+# * https://answers.ros.org/question/195523/warning-map-update-loop-missed-its-desired-rate-keeps-on-comming/

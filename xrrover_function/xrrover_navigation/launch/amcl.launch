@@ -4,8 +4,8 @@
 
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
+    <param name="use_sim_time" value="true"/>
     <rosparam command="load" file="$(find xrrover_navigation)/param/amcl.yaml" />
     <remap from="scan" to="$(arg scan_topic)" />
   </node>
 </launch>
-

@@ -1,0 +1,11 @@
+<launch>
+    <!--Load Gazebo to simulation real environment -->
+    <include file="$(find xrrover_simulation)/launch/xrrover_sim.launch"/>
+
+    <!-- Start the navigation system for target point path planning -->
+    <include file="$(find xrrover_navigation)/launch/xrrover_navigation.launch"/>
+   
+    <!-- Load robot model -->
+    <include file="$(find xrrover_bringup)/launch/xrrover_remote.launch"/>
+    
+  </launch>

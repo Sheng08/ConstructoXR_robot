@@ -87,7 +87,7 @@ roslaunch xrrover_bringup xrrover_model.launch
 or run all in one
 
 ```bash=
-load_all_in_one.launch
+roslaunch xrrover_simulation load_all_in_one.launch
 ```
 
 ---
